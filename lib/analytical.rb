@@ -19,7 +19,7 @@ module Analytical
     @configs ||= {}
     @configs[path] ||= begin
       # Read the config out of the file
-      config = YAML.load(path.read).with_indifferent_access
+      config = YAML.load(path.read).deep_symbolize_keys
 
       # Pull out the correct environment (or toplevel if there isn't an env)
       env = ::Rails.env || :production
